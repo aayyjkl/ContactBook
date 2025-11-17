@@ -3,6 +3,8 @@
 
 #include <QFile>
 #include <QDebug>
+#include <QFontDatabase>
+#include <QHeaderView>
 //#include <QTextStream>
 
 QString mFilename="C:/Users/user/Desktop/Contactbook.txt";
@@ -25,6 +27,18 @@ ContactBook::ContactBook(QWidget *parent)
     , ui(new Ui::ContactBook)
 {
     ui->setupUi(this);
+    
+    // Load Iansui font
+    int fontId = QFontDatabase::addApplicationFont(":/fonts/fonts/Iansui-Regular.ttf");
+    if (fontId != -1) {
+        QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
+        if (!fontFamilies.isEmpty()) {
+            QString family = fontFamilies.at(0);
+            QFont iansuitFont(family);
+            ui->tableWidget->horizontalHeader()->setFont(iansuitFont);
+        }
+    }
+    
     QStringList ColTotle;
     ui->tableWidget->setColumnCount(4);
     ColTotle<<"學號"<<"班級"<<"姓名"<<"電話";
