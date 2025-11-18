@@ -50,6 +50,9 @@ ContactBook::ContactBook(QWidget *parent)
     ui->tableWidget->setColumnCount(4);
     ColTotle<<"學號"<<"班級"<<"姓名"<<"電話";
     ui->tableWidget->setHorizontalHeaderLabels(ColTotle);
+    
+    // Make columns stretch to fill the table widget
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 ContactBook::~ContactBook()
