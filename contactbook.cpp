@@ -9,8 +9,9 @@
 #include <QMessageBox>
 #include <QTextStream>
 #include <QApplication>
+#include <QDir>
 
-QString mFilename="C:/Users/user/Desktop/Contactbook.txt";
+QString mFilename = QCoreApplication::applicationDirPath() + "/Contactbook.txt";
 
 void Write(QString Filename,QString str){
     QFile mFile(Filename);
