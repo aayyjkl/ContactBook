@@ -5,7 +5,10 @@
 #include <QDebug>
 #include <QFontDatabase>
 #include <QHeaderView>
-//#include <QTextStream>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QTextStream>
+#include <QApplication>
 
 QString mFilename="C:/Users/user/Desktop/Contactbook.txt";
 
@@ -79,13 +82,82 @@ void ContactBook::on_pushButton_clicked()
 
 void ContactBook::on_pushButton_2_clicked()
 {
+    QString fileName = QFileDialog::getSaveFileName(this,
+        tr("匯出聯絡人"), "",
+        tr("文字檔案 (*.txt);;逗號分隔檔案 (*.csv);;所有檔案 (*)"));
+
+    if (fileName.isEmpty())
+        return;
+
     QString saveFile="";
 
     for(int i=0;i<ui->tableWidget->rowCount();i++){
         for(int j=0;j<ui->tableWidget->columnCount();j++){
-            saveFile+=ui->tableWidget->item(i,j)->text()+",";
+            if (ui->tableWidget->item(i,j)) {
+                saveFile+=ui->tableWidget->item(i,j)->text()+",";
+            } else {
+                saveFile+=",";
+            }
+        }
+        saveFile+="\n";
+    }
+    Write(fileName,saveFile);
+}
+
+void ContactBook::on_pushButton_3_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+        tr("匯入聯絡人"), "",
+        tr("文字檔案 (*.txt);;逗號分隔檔案 (*.csv);;所有檔案 (*)"));
+
+    if (fileName.isEmpty())
+        return;
+
+    QFile file(fileName);
+    if(!file.open(QFile::ReadOnly | QFile::Text)){
+        QMessageBox::warning(this, tr("錯誤"), tr("無法開啟檔案"));
+        return;
+    }
+
+    QTextStream in(&file);
+    ui->tableWidget->setRowCount(0);
+
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+        
+        if (fields.size() >= 4) {
+            int row = ui->tableWidget->rowCount();
+            ui->tableWidget->insertRow(row);
+            
+            for (int i = 0; i < 4 && i < fields.size(); i++) {
+                QTableWidgetItem *item = new QTableWidgetItem(fields[i]);
+                ui->tableWidget->setItem(row, i, item);
+            }
+        }
+    }
+    file.close();
+}
+
+void ContactBook::saveData()
+{
+    QString saveFile="";
+
+    for(int i=0;i<ui->tableWidget->rowCount();i++){
+        for(int j=0;j<ui->tableWidget->columnCount();j++){
+            if (ui->tableWidget->item(i,j)) {
+                saveFile+=ui->tableWidget->item(i,j)->text()+",";
+            } else {
+                saveFile+=",";
+            }
         }
         saveFile+="\n";
     }
     Write(mFilename,saveFile);
+}
+
+void ContactBook::on_pushButton_4_clicked()
+{
+    saveData();
+    QApplication::quit();
 }
