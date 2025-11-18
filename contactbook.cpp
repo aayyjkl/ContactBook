@@ -28,14 +28,21 @@ ContactBook::ContactBook(QWidget *parent)
 {
     ui->setupUi(this);
     
-    // Load Iansui font
+    // Load Iansui font and apply to entire application
     int fontId = QFontDatabase::addApplicationFont(":/fonts/fonts/Iansui-Regular.ttf");
     if (fontId != -1) {
         QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
         if (!fontFamilies.isEmpty()) {
             QString family = fontFamilies.at(0);
             QFont iansuitFont(family);
+            
+            // Apply font to all UI elements
+            this->setFont(iansuitFont);
+            ui->tableWidget->setFont(iansuitFont);
             ui->tableWidget->horizontalHeader()->setFont(iansuitFont);
+            
+            // Center align table headers
+            ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
         }
     }
     
