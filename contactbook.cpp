@@ -79,12 +79,18 @@ void ContactBook::on_pushButton_clicked()
     ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,1,inputRow2);
     ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,2,inputRow3);
     ui->tableWidget->setItem(ui->tableWidget->rowCount()-1,3,inputRow4);
+    
+    // Clear input fields after adding
+    ui->lineEdit->clear();
+    ui->lineEdit_2->clear();
+    ui->lineEdit_3->clear();
+    ui->lineEdit_4->clear();
 }
 
 void ContactBook::on_pushButton_2_clicked()
 {
     QString fileName = QFileDialog::getSaveFileName(this,
-        tr("匯出聯絡人"), "",
+        tr("匯出聯絡人"), "ContactBook.txt",
         tr("文字檔案 (*.txt);;逗號分隔檔案 (*.csv);;所有檔案 (*)"));
 
     if (fileName.isEmpty())

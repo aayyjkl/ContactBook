@@ -196,22 +196,24 @@ QLineEdit:focus {
       <string notr="true">QTableWidget {
     border: 1px solid #ddd;
     border-radius: 3px;
-    background-color: #fff;
-    gridline-color: #ddd;
+    background-color: palette(base);
+    color: palette(text);
+    gridline-color: palette(mid);
     font-family: "Iansui";
     font-size: 13px;
 }
 QTableWidget::item {
     padding: 8px;
+    color: palette(text);
 }
 QTableWidget::item:selected {
     background-color: #5bc0de;
     color: white;
 }
 QHeaderView::section {
-    background-color: #5cb85c;
+    background-color: #E97451;
     padding: 10px;
-    border: 1px solid #4cae4c;
+    border: 1px solid #D5623E;
     font-family: "Iansui";
     font-weight: bold;
     font-size: 14px;
