@@ -10,8 +10,9 @@
 #include <QTextStream>
 #include <QApplication>
 #include <QDir>
+#include <QStandardPaths>
 
-QString mFilename = QCoreApplication::applicationDirPath() + "/ContactBook_autosave.txt";
+QString mFilename = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/ContactBook_autosave.txt";
 
 void Write(QString Filename,QString str){
     QFile mFile(Filename);
