@@ -166,5 +166,5 @@ void ContactBook::saveData()
 void ContactBook::on_pushButton_4_clicked()
 {
     saveData();
-    QApplication::quit();
+    close();
 }
