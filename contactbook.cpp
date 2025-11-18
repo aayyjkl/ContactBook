@@ -11,8 +11,6 @@
 #include <QApplication>
 #include <QDir>
 
-QString mFilename = QCoreApplication::applicationDirPath() + "/Contactbook.txt";
-
 void Write(QString Filename,QString str){
     QFile mFile(Filename);
 
@@ -146,25 +144,7 @@ void ContactBook::on_pushButton_3_clicked()
     file.close();
 }
 
-void ContactBook::saveData()
-{
-    QString saveFile="";
-
-    for(int i=0;i<ui->tableWidget->rowCount();i++){
-        for(int j=0;j<ui->tableWidget->columnCount();j++){
-            if (ui->tableWidget->item(i,j)) {
-                saveFile+=ui->tableWidget->item(i,j)->text()+",";
-            } else {
-                saveFile+=",";
-            }
-        }
-        saveFile+="\n";
-    }
-    Write(mFilename,saveFile);
-}
-
 void ContactBook::on_pushButton_4_clicked()
 {
-    saveData();
     close();
 }

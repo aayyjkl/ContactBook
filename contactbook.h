@@ -28,6 +28,5 @@ private slots:
 
 private:
     Ui::ContactBook *ui;
-    void saveData();
 };
 #endif // CONTACTBOOK_H
