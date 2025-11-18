@@ -11,7 +11,7 @@
 #include <QApplication>
 #include <QDir>
 
-QString mFilename = QCoreApplication::applicationDirPath() + "/Contactbook.txt";
+QString mFilename = QCoreApplication::applicationDirPath() + "/ContactBook_autosave.txt";
 
 void Write(QString Filename,QString str){
     QFile mFile(Filename);
