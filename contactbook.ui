@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>ContactBook</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #ffffff;
+}</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="5" column="1" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -21,12 +26,48 @@
        <property name="text">
         <string>新增</string>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-family: "Iansui";
+    font-size: 14px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #4cae4c;
+}
+QPushButton:pressed {
+    background-color: #449d44;
+}</string>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_2">
        <property name="text">
         <string>匯出</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #5bc0de;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-family: "Iansui";
+    font-size: 14px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #46b8da;
+}
+QPushButton:pressed {
+    background-color: #31b0d5;
+}</string>
        </property>
       </widget>
      </item>
@@ -35,6 +76,24 @@
        <property name="text">
         <string>匯入</string>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-family: "Iansui";
+    font-size: 14px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #ec971f;
+}
+QPushButton:pressed {
+    background-color: #d58512;
+}</string>
+       </property>
       </widget>
      </item>
      <item>
@@ -42,17 +101,59 @@
        <property name="text">
         <string>結束</string>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-family: "Iansui";
+    font-size: 14px;
+    font-weight: normal;
+}
+QPushButton:hover {
+    background-color: #c9302c;
+}
+QPushButton:pressed {
+    background-color: #ac2925;
+}</string>
+       </property>
       </widget>
      </item>
     </layout>
    </item>
    <item row="1" column="2">
-    <widget class="QLineEdit" name="lineEdit"/>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 8px;
+    font-family: "Iansui";
+    font-size: 14px;
+    background-color: #fff;
+}
+QLineEdit:focus {
+    border: 1px solid #66afe9;
+    outline: none;
+}</string>
+     </property>
+    </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>姓名:</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #333;
+    font-family: "Iansui";
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px;
+}</string>
      </property>
     </widget>
    </item>
@@ -61,6 +162,15 @@
      <property name="text">
       <string>班級:</string>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #333;
+    font-family: "Iansui";
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px;
+}</string>
+     </property>
     </widget>
    </item>
    <item row="1" column="0" colspan="2">
@@ -68,26 +178,117 @@
      <property name="text">
       <string>學號:</string>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #333;
+    font-family: "Iansui";
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px;
+}</string>
+     </property>
     </widget>
    </item>
    <item row="0" column="0" colspan="3">
-    <widget class="QTableWidget" name="tableWidget"/>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="styleSheet">
+      <string notr="true">QTableWidget {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    gridline-color: #ddd;
+    font-family: "Iansui";
+    font-size: 13px;
+}
+QTableWidget::item {
+    padding: 8px;
+}
+QTableWidget::item:selected {
+    background-color: #5bc0de;
+    color: white;
+}
+QHeaderView::section {
+    background-color: #5cb85c;
+    padding: 10px;
+    border: 1px solid #4cae4c;
+    font-family: "Iansui";
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+}</string>
+     </property>
+    </widget>
    </item>
    <item row="2" column="2">
-    <widget class="QLineEdit" name="lineEdit_2"/>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 8px;
+    font-family: "Iansui";
+    font-size: 14px;
+    background-color: #fff;
+}
+QLineEdit:focus {
+    border: 1px solid #66afe9;
+    outline: none;
+}</string>
+     </property>
+    </widget>
    </item>
    <item row="3" column="2">
-    <widget class="QLineEdit" name="lineEdit_3"/>
+    <widget class="QLineEdit" name="lineEdit_3">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 8px;
+    font-family: "Iansui";
+    font-size: 14px;
+    background-color: #fff;
+}
+QLineEdit:focus {
+    border: 1px solid #66afe9;
+    outline: none;
+}</string>
+     </property>
+    </widget>
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>電話:</string>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #333;
+    font-family: "Iansui";
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px;
+}</string>
+     </property>
     </widget>
    </item>
    <item row="4" column="2">
-    <widget class="QLineEdit" name="lineEdit_4"/>
+    <widget class="QLineEdit" name="lineEdit_4">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 8px;
+    font-family: "Iansui";
+    font-size: 14px;
+    background-color: #fff;
+}
+QLineEdit:focus {
+    border: 1px solid #66afe9;
+    outline: none;
+}</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

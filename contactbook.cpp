@@ -3,6 +3,8 @@
 
 #include <QFile>
 #include <QDebug>
+#include <QFontDatabase>
+#include <QHeaderView>
 //#include <QTextStream>
 
 QString mFilename="C:/Users/user/Desktop/Contactbook.txt";
@@ -25,10 +27,32 @@ ContactBook::ContactBook(QWidget *parent)
     , ui(new Ui::ContactBook)
 {
     ui->setupUi(this);
+    
+    // Load Iansui font and apply to entire application
+    int fontId = QFontDatabase::addApplicationFont(":/fonts/fonts/Iansui-Regular.ttf");
+    if (fontId != -1) {
+        QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
+        if (!fontFamilies.isEmpty()) {
+            QString family = fontFamilies.at(0);
+            QFont iansuitFont(family);
+            
+            // Apply font to all UI elements
+            this->setFont(iansuitFont);
+            ui->tableWidget->setFont(iansuitFont);
+            ui->tableWidget->horizontalHeader()->setFont(iansuitFont);
+            
+            // Center align table headers
+            ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
+        }
+    }
+    
     QStringList ColTotle;
     ui->tableWidget->setColumnCount(4);
     ColTotle<<"學號"<<"班級"<<"姓名"<<"電話";
     ui->tableWidget->setHorizontalHeaderLabels(ColTotle);
+    
+    // Make columns stretch to fill the table widget
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 ContactBook::~ContactBook()
